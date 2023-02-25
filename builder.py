@@ -53,6 +53,7 @@ def prep():
 
 def main():
     download()
+    prep()
     return True
 
 if __name__ == "__main__":
