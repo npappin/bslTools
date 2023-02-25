@@ -17,8 +17,10 @@ def download():
     dataToProcess = [item for item in dataToProcess if item['file_type'] == 'csv']
     if not os.path.isdir('data'):
         os.makedirs('data')
+        if not os.path.isdir(os.path.join('data', 'zips')):
+            os.makedirs(os.path.join('data', 'zips'))
 
-    cachedFiles = os.listdir('data')
+    cachedFiles = os.listdir(os.path.join('data', 'zips'))
     cachedFiles = [entry for entry in cachedFiles if entry.endswith(".zip")]
     cachedFileNames = [x.split('.')[0] for x in cachedFiles]
 
@@ -27,7 +29,7 @@ def download():
         if item['file_name'] not in cachedFileNames:
             url = f"https://broadbandmap.fcc.gov/nbm/map/api/getNBMDataDownloadFile/{item['id']}/1"
             r = s.get(url)
-            filename = f'{os.path.join("data", item["file_name"])}.zip'
+            filename = f'{os.path.join("data", "zips", item["file_name"])}.zip'
             open(filename, 'wb').write(r.content)
     return True
 
