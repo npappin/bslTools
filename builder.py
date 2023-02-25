@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import requests, json, os
+import requests, json, os, shutil
 from tqdm import tqdm
 
 def download():
@@ -31,6 +31,24 @@ def download():
             r = s.get(url)
             filename = f'{os.path.join("data", "zips", item["file_name"])}.zip'
             open(filename, 'wb').write(r.content)
+    return True
+
+def prep():
+    fileList = os.listdir(os.path.join('data', 'zips'))
+    fileList = [f for f in fileList if f.endswith('.zip')]
+    for file in tqdm(fileList):
+        # fileName = f'{file}'
+        state = file.split('_')[1]
+        if not os.path.isdir(os.path.join('data', state)):
+            os.makedirs(os.path.join('data', state))
+        shutil.unpack_archive(os.path.join('data', 'zips', file), os.path.join('data', state))
+        # os.remove(file)
+
+    # Fix Ohio
+    here = os.path.join("data", "39", "bdc_39_Licensed-Fixed-Wireless_fixed_broadband_063022", "bdc_39_Licensed-Fixed-Wireless_fixed_broadband_063022.csv")
+    there = os.path.join("data", "39")
+    shutil.move(here, there)
+    os.rmdir(os.path.join("data", "39", "bdc_39_Licensed-Fixed-Wireless_fixed_broadband_063022"))
     return True
 
 def main():
