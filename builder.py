@@ -2,6 +2,7 @@
 
 import requests, json, os
 from tqdm import tqdm
+
 def download():
     s = requests.Session()
     s.headers.update({'User-Agent': 'bslTools'})
