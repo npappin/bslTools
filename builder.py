@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
-import requests, json, os, shutil
+import requests, json, os, shutil, sys
 from tqdm import tqdm
+import pandas as pd
+
 
 def download():
     s = requests.Session()
@@ -68,10 +70,84 @@ def prep():
         )
     return True
 
+
+def buildStates():
+    folderList = os.listdir("data")
+    dropItems = ["zips", ".DS_Store"]
+    folderList = [f for f in folderList if f not in dropItems]
+    # print(folderList)
+    for folder in tqdm(folderList):
+        # Do state stuff
+        fileList = os.listdir(os.path.join("data", folder))
+        fileList = [f for f in fileList if f.endswith(".csv")]
+        # print(fileList)
+        stateData = pd.DataFrame()
+        for file in tqdm(fileList):
+            df = pd.DataFrame()
+            df = pd.read_csv(os.path.join("data", folder, file))
+            # os.remove(file)
+            stateName = df.state_usps.unique()[0].lower()
+            columnsToDrop = [
+                "frn",
+                "provider_id",
+                "brand_name",
+                "technology",
+                "max_advertised_download_speed",
+                "max_advertised_upload_speed",
+                "low_latency",
+                "business_residential_code",
+                "state_usps",
+            ]
+            df = df.drop(columns=columnsToDrop)
+            df.drop_duplicates(inplace=True)
+            stateData = pd.concat([stateData, df], ignore_index=True)
+            # print(df)
+        print(f'\n{stateName}\n')
+        stateData.drop_duplicates(inplace=True)
+        stateData.reset_index(drop=True, inplace=True)
+        dfH3 = pd.DataFrame(stateData)
+        dfBlock = pd.DataFrame(stateData)
+        bslLookup = pd.DataFrame(stateData)
+        dfH3.drop(columns=["block_geoid"], inplace=True)
+        dfH3.drop_duplicates(inplace=True)
+        dfBlock.drop(columns=["h3_res8_id"], inplace=True)
+        dfBlock.drop_duplicates(inplace=True)
+        dfH3.drop(columns=["location_id"], inplace=True)
+        dfBlock.drop(columns=["location_id"], inplace=True)
+        dfH3 = (
+            dfH3.groupby("h3_res8_id").size().reset_index().rename(columns={0: "bsls"})
+        )
+        dfBlock = (
+            dfBlock.groupby("block_geoid")
+            .size()
+            .reset_index()
+            .rename(columns={0: "bsls"})
+        )
+        if not os.path.isdir(os.path.join("states")):
+            os.mkdir(os.path.join("states"))
+        dfH3.to_csv(os.path.join("states", f"{stateName}H3Bsls.csv"), index=False)
+        dfH3.to_parquet(
+            os.path.join("states", f"{stateName}H3Bsls.parquet"), index=False
+        )
+        dfBlock.to_csv(os.path.join("states", f"{stateName}BlockBsls.csv"), index=False)
+        dfBlock.to_parquet(
+            os.path.join("states", f"{stateName}BlockBsls.parquet"), index=False
+        )
+        bslLookup.to_csv(
+            os.path.join("states", f"{stateName}BslLookup.csv"), index=False
+        )
+        bslLookup.to_parquet(
+            os.path.join("states", f"{stateName}BslLookup.parquet"), index=False
+        )
+    pass
+
+
 def main():
     download()
     prep()
+    buildStates()
     return True
+
 
 if __name__ == "__main__":
     main()
