@@ -132,6 +132,10 @@ dmypy.json
 data/
 states/
 national/
+locationLookup*
+blockBsls*
+h3Bsls*
+stats.xlsx
 
 # Mac stuff
 .DS_Store
