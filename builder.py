@@ -102,7 +102,7 @@ def buildStates():
             df.drop_duplicates(inplace=True)
             stateData = pd.concat([stateData, df], ignore_index=True)
             # print(df)
-        print(f'\n{stateName}\n')
+        print(f"\n{stateName}\n")
         stateData.drop_duplicates(inplace=True)
         stateData.reset_index(drop=True, inplace=True)
         dfH3 = pd.DataFrame(stateData)
@@ -142,10 +142,48 @@ def buildStates():
     pass
 
 
+def buildNational():
+    fileList = os.listdir("states")
+    fileList = [f for f in fileList if f.endswith(".parquet")]
+    lookupList = [f for f in fileList if f.endswith("Lookup.parquet")]
+    blockList = [f for f in fileList if f.endswith("BlockBsls.parquet")]
+    h3List = [f for f in fileList if f.endswith("H3Bsls.parquet")]
+    lookup = pd.DataFrame()
+    print("lookup")
+    for f in tqdm(lookupList):
+        df = pd.DataFrame()
+        df = pd.read_parquet(os.path.join("states", f))
+        lookup = pd.concat([lookup, df], ignore_index=True)
+    lookup.to_csv(os.path.join("national", "bslsLookup.csv"), index=False)
+    lookup.to_parquet(os.path.join("national", "bslsLookup.parquet"), index=False)
+    del lookup
+    blockBsls = pd.DataFrame()
+    print("block")
+    for f in tqdm(blockList):
+        df = pd.DataFrame()
+        df = pd.read_parquet(os.path.join("states", f))
+        blockBsls = pd.concat([blockBsls, df], ignore_index=True)
+    blockBsls = blockBsls.groupby("block_geoid").sum().reset_index()
+    blockBsls.to_csv(os.path.join("national", "blockBsls.csv"), index=False)
+    blockBsls.to_parquet(os.path.join("national", "blockBsls.parquet"), index=False)
+    del blockBsls
+    h3Bsls = pd.DataFrame()
+    print("h3")
+    for f in tqdm(h3List):
+        df = pd.DataFrame()
+        df = pd.read_parquet(os.path.join("states", f))
+        h3Bsls = pd.concat([h3Bsls, df], ignore_index=True)
+    h3Bsls = h3Bsls.groupby("h3_res8_id").sum().reset_index()
+    h3Bsls.to_csv(os.path.join("national", "h3Bsls.csv"), index=False)
+    h3Bsls.to_parquet(os.path.join("national", "h3Bsls.parquet"), index=False)
+    pass
+
+
 def main():
     download()
     prep()
     buildStates()
+    buildNational()
     return True
 
 
