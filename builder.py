@@ -39,7 +39,7 @@ def download():
 def prep():
     fileList = os.listdir(os.path.join("data", "zips"))
     fileList = [f for f in fileList if f.endswith(".zip")]
-    for file in tqdm(fileList[10:15]):
+    for file in tqdm(fileList):
         # fileName = f'{file}'
         state = file.split("_")[1]
         if not os.path.isdir(os.path.join("data", state)):
