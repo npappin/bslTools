@@ -154,6 +154,8 @@ def buildNational():
         df = pd.DataFrame()
         df = pd.read_parquet(os.path.join("states", f))
         lookup = pd.concat([lookup, df], ignore_index=True)
+    if not os.path.isdir("national"):
+        os.makedirs("national")
     lookup.to_csv(os.path.join("national", "bslsLookup.csv"), index=False)
     lookup.to_parquet(os.path.join("national", "bslsLookup.parquet"), index=False)
     del lookup
