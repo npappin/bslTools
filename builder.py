@@ -6,6 +6,7 @@ import pandas as pd
 
 
 def download():
+    print("Downloading files")
     s = requests.Session()
     s.headers.update({"User-Agent": "bslTools"})
     response = s.get("https://broadbandmap.fcc.gov/nbm/map/api/published/filing")
@@ -37,6 +38,7 @@ def download():
 
 
 def prep():
+    print("Preparing Files")
     fileList = os.listdir(os.path.join("data", "zips"))
     fileList = [f for f in fileList if f.endswith(".zip")]
     for file in tqdm(fileList):
@@ -72,6 +74,7 @@ def prep():
 
 
 def buildStates():
+    print("Building state level data")
     folderList = os.listdir("data")
     dropItems = ["zips", ".DS_Store"]
     folderList = [f for f in folderList if f not in dropItems]
@@ -143,6 +146,7 @@ def buildStates():
 
 
 def buildNational():
+    print("Building national level data")
     fileList = os.listdir("states")
     fileList = [f for f in fileList if f.endswith(".parquet")]
     lookupList = [f for f in fileList if f.endswith("Lookup.parquet")]
