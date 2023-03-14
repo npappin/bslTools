@@ -14,9 +14,8 @@ Parquet Download: [Here](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bsl
 
 ### Count of LocationID by H3 Tile
 
-CSV Download: [Here](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/national/h3Bsls.csv)
-
-Parquet Download: [Here](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/national/h3Bsls.parquet)
+* CSV Download: [Here](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/national/h3Bsls.csv)
+* Parquet Download: [Here](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/national/h3Bsls.parquet)
 
 ## State level downloads
 
