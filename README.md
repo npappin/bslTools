@@ -12,13 +12,15 @@ Count of LocationID by Census Block:
 CSV Download: [Here](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/national/blockBsls.csv)
 Parquet Download: [Here](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/national/blockBsls.parquet)
 
-Count of LocationID by H3 Tile
+### Count of LocationID by H3 Tile
+
 CSV Download: [Here](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/national/h3Bsls.csv)
 Parquet Download: [Here](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/national/h3Bsls.parquet)
 
 ## State level downloads
 
 | State | LocationIdLookup | BSL count by Block | BSL count by H3 Tile |
+|---|---|---|---|
 | AK | [CSV](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/states/akBslLookup.csv) [Parquet](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/states/akBslLookup.parquet) | [CSV](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/states/akBlockBsls.csv) [Parquet](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/states/akBlockBsls.parquet) | [CSV](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/states/akH3Bsls.csv) [Parquet](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/states/akH3Bsls.parquet) |
 | AL | [CSV](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/states/alBslLookup.csv) [Parquet](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/states/alBslLookup.parquet) | [CSV](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/states/alBlockBsls.csv) [Parquet](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/states/alBlockBsls.parquet) | [CSV](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/states/alH3Bsls.csv) [Parquet](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/states/alH3Bsls.parquet) |
 | AR | [CSV](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/states/arBslLookup.csv) [Parquet](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/states/arBslLookup.parquet) | [CSV](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/states/arBlockBsls.csv) [Parquet](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/states/arBlockBsls.parquet) | [CSV](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/states/arH3Bsls.csv) [Parquet](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/states/arH3Bsls.parquet) |
