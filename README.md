@@ -4,13 +4,15 @@ A set of tools to make use of the public FCC datasets and build useful BSL infor
 
 ## Prebuilt Data
 
-LocationID to H3 tile or Census Block:
-CSV Download: [Here](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/national/bslsLookup.csv)
-Parquet Download: [Here](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/national/bslsLookup.parquet)
+### LocationID to H3 tile or Census Block
 
-Count of LocationID by Census Block:
-CSV Download: [Here](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/national/blockBsls.csv)
-Parquet Download: [Here](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/national/blockBsls.parquet)
+* CSV Download: [Here](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/national/bslsLookup.csv)
+* Parquet Download: [Here](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/national/bslsLookup.parquet)
+
+### Count of LocationID by Census Block
+
+* CSV Download: [Here](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/national/blockBsls.csv)
+* Parquet Download: [Here](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/national/blockBsls.parquet)
 
 ### Count of LocationID by H3 Tile
 
