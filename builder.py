@@ -87,7 +87,10 @@ def buildStates():
         stateData = pd.DataFrame()
         for file in tqdm(fileList):
             df = pd.DataFrame()
-            df = pd.read_csv(os.path.join("data", folder, file))
+            dfColumnHints = {
+                'block_geoid': str
+            }
+            df = pd.read_csv(os.path.join("data", folder, file), dtype=dfColumnHints)
             # os.remove(file)
             stateName = df.state_usps.unique()[0].lower()
             columnsToDrop = [
