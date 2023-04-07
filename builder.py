@@ -3,6 +3,9 @@
 import requests, json, os, shutil, sys
 from tqdm import tqdm
 import pandas as pd
+from datetime import datetime
+from dateutil.parser import parse as dtparse
+from jinja2 import Environment, FileSystemLoader
 
 def writeJson(dict2json: dict, filename: str):
     jsonString = json.dumps(dict2json, indent=2)
@@ -98,6 +101,7 @@ def buildStates():
     dropItems = ["zips", ".DS_Store"]
     folderList = [f for f in folderList if f not in dropItems]
     # print(folderList)
+    states = list()
     for folder in tqdm(folderList):
         # Do state stuff
         fileList = os.listdir(os.path.join("data", folder))
@@ -164,7 +168,8 @@ def buildStates():
         bslLookup.to_parquet(
             os.path.join("states", f"{stateName}BslLookup.parquet"), index=False
         )
-    pass
+        states.append(stateName)
+    return states
 
 
 def buildNational():
@@ -207,11 +212,26 @@ def buildNational():
     pass
 
 
+def readmeBuild(updatedDate: datetime, states: list):
+    enviro = Environment(loader=FileSystemLoader("."))
+    template = enviro.get_template('templateREADME.jinja')
+    data = {
+        "shortDate": updatedDate.strftime('%Y%m%d'),
+        "longDate": updatedDate.strftime("%B %d, %Y"),
+        "states": states
+    }
+    content = template.render(data)
+    with open('README.md', mode='w', encoding='utf-8') as readme:
+        readme.write(content)
+    pass
+
+
 def main():
     _, updatedDate = download()
     prep()
-    buildStates()
+    states = buildStates()
     buildNational()
+    readmeBuild(updatedDate, states)
     return True
 
 
