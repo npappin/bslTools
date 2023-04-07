@@ -4,17 +4,36 @@ import requests, json, os, shutil, sys
 from tqdm import tqdm
 import pandas as pd
 
+def writeJson(dict2json: dict, filename: str):
+    jsonString = json.dumps(dict2json, indent=2)
+    with open(f"{filename}.json", "w") as outfile:
+        outfile.write(jsonString)
+    pass
 
 def download():
     print("Downloading files")
     s = requests.Session()
     s.headers.update({"User-Agent": "bslTools"})
-    response = s.get("https://broadbandmap.fcc.gov/nbm/map/api/published/filing")
+    # Get current filing
+    url = "https://broadbandmap.fcc.gov/nbm/map/api/published/filing"
+    response = s.get(url)
     parsed = json.loads(response.text)
     uuid = parsed["data"][0]["process_uuid"]
+    # Get filing metadata
+    url = f'https://broadbandmap.fcc.gov/api/reference/map_processing_updates/{uuid}'
+    response = s.get(url)
+    parsed = json.loads(response.text)
+    updatedDate = dtparse(parsed['data'][0]['last_updated_date']).strftime('%Y%m%d')
+    updatedDateFolderString = updatedDate.strftime('%Y%m%d')
+    if not os.path.isdir(updatedDateFolderString):
+        os.makedirs(updatedDateFolderString)
+    os.chdir(updatedDateFolderString)
+    writeJson(parsed, 'filingMetadata')
+    # Get filing data
     url = f"https://broadbandmap.fcc.gov/nbm/map/api/national_map_process/nbm_get_data_download/{uuid}"
     response = s.get(url)
     parsed = json.loads(response.text)
+    writeJson(parsed, 'fileMetadata')
     dataToProcess = parsed["data"]
     dataToProcess = [item for item in dataToProcess if item["state_name"] != None]
     dataToProcess = [item for item in dataToProcess if item["file_type"] == "csv"]
@@ -34,7 +53,7 @@ def download():
             r = s.get(url)
             filename = f'{os.path.join("data", "zips", item["file_name"])}.zip'
             open(filename, "wb").write(r.content)
-    return True
+    return True, updatedDate
 
 
 def prep():
@@ -189,7 +208,7 @@ def buildNational():
 
 
 def main():
-    download()
+    _, updatedDate = download()
     prep()
     buildStates()
     buildNational()
