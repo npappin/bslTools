@@ -26,7 +26,7 @@ def download():
     url = f'https://broadbandmap.fcc.gov/api/reference/map_processing_updates/{uuid}'
     response = s.get(url)
     parsed = json.loads(response.text)
-    updatedDate = dtparse(parsed['data'][0]['last_updated_date']).strftime('%Y%m%d')
+    updatedDate = dtparse(parsed['data'][0]['last_updated_date'])
     updatedDateFolderString = updatedDate.strftime('%Y%m%d')
     if not os.path.isdir(updatedDateFolderString):
         os.makedirs(updatedDateFolderString)
@@ -98,7 +98,7 @@ def prep():
 def buildStates():
     print("Building state level data")
     folderList = os.listdir("data")
-    dropItems = ["zips", ".DS_Store"]
+    dropItems = ["zips", ".DS_Store", ".ipynb_checkpoints"]
     folderList = [f for f in folderList if f not in dropItems]
     # print(folderList)
     states = list()
