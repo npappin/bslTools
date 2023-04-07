@@ -72,26 +72,6 @@ def prep():
             os.path.join("data", "zips", file), os.path.join("data", state)
         )
         # os.remove(file)
-
-    # # Fix Ohio
-    # here = os.path.join(
-    #     "data",
-    #     "39",
-    #     "bdc_39_Licensed-Fixed-Wireless_fixed_broadband_063022",
-    #     "bdc_39_Licensed-Fixed-Wireless_fixed_broadband_063022.csv",
-    # )
-    # there = os.path.join("data", "39")
-    # if os.path.isdir(
-    #     os.path.join(
-    #         "data", "39", "bdc_39_Licensed-Fixed-Wireless_fixed_broadband_063022"
-    #     )
-    # ):
-    #     shutil.move(here, there)
-    #     os.rmdir(
-    #         os.path.join(
-    #             "data", "39", "bdc_39_Licensed-Fixed-Wireless_fixed_broadband_063022"
-    #         )
-    #     )
     return True
 
 
