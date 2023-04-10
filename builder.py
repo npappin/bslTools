@@ -193,8 +193,8 @@ def buildNational():
 
 
 def readmeBuild(updatedDate: datetime, states: list):
-    enviro = Environment(loader=FileSystemLoader("."))
-    template = enviro.get_template(os.path.join('..', 'templateREADME.jinja'))
+    enviro = Environment(loader=FileSystemLoader(".."))
+    template = enviro.get_template('templateREADME.jinja')
     data = {
         "shortDate": updatedDate.strftime('%Y%m%d'),
         "longDate": updatedDate.strftime("%B %d, %Y"),
