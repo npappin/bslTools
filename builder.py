@@ -203,6 +203,7 @@ def readmeBuild(updatedDate: datetime, states: list):
     content = template.render(data)
     with open('README.md', mode='w', encoding='utf-8') as readme:
         readme.write(content)
+    print(f'Date for file sync: {data["shortDate"]}')
     pass
 
 

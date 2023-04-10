@@ -3,3 +3,4 @@ tqdm
 pandas
 pyarrow
 Jinja2
+aws
