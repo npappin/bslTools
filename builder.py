@@ -205,6 +205,32 @@ def readmeBuild(updatedDate: datetime, states: list):
     with open('README.md', mode='w', encoding='utf-8') as readme:
         readme.write(content)
     print(f'Date for file sync: {data["shortDate"]}')
+    metadata = dict()
+    metadata["date"] = data["shortDate"]
+    metadata["longdate"] = data["longDate"]
+    metadata["states"] = dict()
+    for state in states:
+        metadata["states"][state] = dict()
+        metadata["states"][state]["lookup"] = dict()
+        metadata["states"][state]["lookup"]["csv"] = f"https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/{data['shortDate']}/states/{state.lower()}BslLookup.csv"
+        metadata["states"][state]["lookup"]["parquet"] = f"https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/{data['shortDate']}/states/{state.lower()}BslLookup.parquet"
+        metadata["states"][state]["block"] = dict()
+        metadata["states"][state]["block"]["csv"] = f"https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/{data['shortDate']}/states/{state.lower()}BlockBsls.csv"
+        metadata["states"][state]["block"]["parquet"] = f"https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/{data['shortDate']}/states/{state.lower()}BlockBsls.parquet"
+        metadata["states"][state]["h3"] = dict()
+        metadata["states"][state]["h3"]["csv"] = f"https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/{data['shortDate']}/states/{state.lower()}H3Bsls.csv"
+        metadata["states"][state]["h3"]["parquet"] = f"https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/{data['shortDate']}/states/{state.lower()}H3Bsls.parquet"
+    metadata["national"] = dict()
+    metadata["national"]["lookup"] = dict()
+    metadata["national"]["lookup"]["csv"] = f"https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/{data['shortDate']}/national/bslsLookup.csv"
+    metadata["national"]["lookup"]["parquet"] = f"https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/{data['shortDate']}/national/bslsLookup.parquet"
+    metadata["national"]["block"] = dict()
+    metadata["national"]["block"]["csv"] = f"https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/{data['shortDate']}/national/blockBsls.csv"
+    metadata["national"]["block"]["parquet"] = f"https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/{data['shortDate']}/national/blockBsls.parquet"
+    metadata["national"]["h3"] = dict()
+    metadata["national"]["h3"]["csv"] = f"https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/{data['shortDate']}/national/h3Bsls.csv"
+    metadata["national"]["h3"]["parquet"] = f"https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/{data['shortDate']}/national/h3Bsls.parquet"
+    writeJson(metadata, "metadata")
     pass
 
 
