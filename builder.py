@@ -193,6 +193,7 @@ def buildNational():
 
 
 def readmeBuild(updatedDate: datetime, states: list):
+    states.sort()
     enviro = Environment(loader=FileSystemLoader(".."))
     template = enviro.get_template('templateREADME.jinja')
     data = {
