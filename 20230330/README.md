@@ -79,3 +79,14 @@ Please find the filing data for the March 30, 2023 update below.
 | WI | [CSV](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/20230330/states/wiBslLookup.csv) / [Parquet](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/20230330/states/wiBslLookup.parquet) | [CSV](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/20230330/states/wiBlockBsls.csv) / [Parquet](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/20230330/states/wiBlockBsls.parquet) | [CSV](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/20230330/states/wiH3Bsls.csv) / [Parquet](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/20230330/states/wiH3Bsls.parquet) |
 | WV | [CSV](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/20230330/states/wvBslLookup.csv) / [Parquet](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/20230330/states/wvBslLookup.parquet) | [CSV](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/20230330/states/wvBlockBsls.csv) / [Parquet](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/20230330/states/wvBlockBsls.parquet) | [CSV](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/20230330/states/wvH3Bsls.csv) / [Parquet](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/20230330/states/wvH3Bsls.parquet) |
 | WY | [CSV](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/20230330/states/wyBslLookup.csv) / [Parquet](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/20230330/states/wyBslLookup.parquet) | [CSV](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/20230330/states/wyBlockBsls.csv) / [Parquet](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/20230330/states/wyBlockBsls.parquet) | [CSV](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/20230330/states/wyH3Bsls.csv) / [Parquet](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/20230330/states/wyH3Bsls.parquet) |
+
+## Notes for automated access
+
+* This repository has an API file that you can use to access all the data from the directories in an automated fashion. A link to this file is here: [Link](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/20230330/metadata.json) For more information please refer to the documentation in the base git repository.
+
+## Historical caching
+
+Below are mirrors of the original filing endpoints for future reference.
+
+* [filingMetadata.json](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/20230330/filingMetadata.json)
+* [fileMetadata.json](https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/20230330/fileMetadata.json)
