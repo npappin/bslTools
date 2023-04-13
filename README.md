@@ -8,3 +8,5 @@ Please select a filing below for direct download links:
 
 * March 30, 2023 - [Link](20230330/README.md)
 * March 15, 2023 - [Link](20230315/README.md)
+
+There is a JSON version of this data [here](metadata.json) that you can use to automate access to the updated filings. 
