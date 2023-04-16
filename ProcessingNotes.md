@@ -13,7 +13,7 @@
 * `source venv/bin/activate`
 * `./builder.py`
 * Change to the data directory
-* Checksum the data: `find . -type f -exec sha256sum {} \; > ..\files.sha256sum`
+* Checksum the data: `find . -type f -not -path "./data/*" -exec sha256sum {} \; > files.sha256sum`
 
 ## Upload Results
 
