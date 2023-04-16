@@ -1,6 +1,9 @@
 {
-  "currentFiling": "20230330",
+  "currentFiling": "20230412",
   "releases": {
+    "20230412": {
+      "url": "https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/20230412/metadata.json"
+    },
     "20230330": {
       "url": "https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/20230330/metadata.json"
     },
