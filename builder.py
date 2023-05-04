@@ -88,6 +88,7 @@ def buildStates():
         fileList = [f for f in fileList if f.endswith(".csv")]
         # print(fileList)
         stateData = pd.DataFrame()
+        print(f"\n{folder}\n")
         for file in tqdm(fileList):
             df = pd.DataFrame()
             dfColumnHints = {
