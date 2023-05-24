@@ -1,6 +1,10 @@
 {
-  "currentFiling": "20230426",
+  "currentFiling": "20230510",
   "releases": {
+    "20230510": {
+      "version": "20220630.20230510.1",
+      "url": "https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/20230510/metadata.json"
+    },
     "20230426": {
       "version": "20220630.20230426.2",
       "url": "https://pub-96372591292d4fdca85ff0f6db6c67c2.r2.dev/bslTools/20230426/metadata.json"
